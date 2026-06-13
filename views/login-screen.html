@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/login-screen-style.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <div id="titlebar">
+      <div class="window-controls">
+        <button class="btn-minimize" onclick="window.electronAPI.minimize()">
+          <i class="bx bx-minus"></i>
+        </button>
+        <button class="btn-close" onclick="window.electronAPI.close()">
+          <i class="bx bx-x"></i>
+        </button>
+      </div>
+    </div>
+    <div id="main">
+      <form action="">
+        <img src="../assets/icon.png" alt="" />
+        <h1>Bem vindo de volta!</h1>
+        <p>E aí, vamos começar?</p>
+        <button type="button" id="openWindow">Bora lá!</button>
+      </form>
+    </div>
+    <script>
+      document.getElementById("openWindow").addEventListener("click", () => {
+        window.electronAPI.openWindow();
+      });
+    </script>
+  </body>
+</html>

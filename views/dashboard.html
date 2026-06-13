@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/dashboard-style.css" />
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <div id="titlebar">
+      <button class="btn-minimize" onclick="electronAPI.minimize()">
+        <i class="bx bx-minus"></i>
+      </button>
+      <button class="btn-close" onclick="electronAPI.close()">
+        <i class="bx bx-x"></i>
+      </button>
+    </div>
+    <div id="everything">
+      <div id="title-and-picture">
+        <img src="../assets/icon.png" />
+        <h1>Enviador de mensagens</h1>
+      </div>
+      <div id="center-content">
+        <textarea
+          id="message"
+          rows="10"
+          cols="50"
+          placeholder="Digite o texto que você quer enviar aqui"
+        ></textarea>
+        <button id="btnEnviar"><i class="bx bx-send"></i></button>
+      </div>
+      <div id="import-content">
+        <button id="btnImport"><i class="bx bx-import"></i></button>
+        <p id="status">Nenhum arquivo selecionado.</p>
+      </div>
+      <div id="warning_div">
+        <p class="warning">1.Crie uma planilha excel</p>
+        <p class="warning">2.nomeie a aba da planilha de "Página1"</p>
+        <p class="warning">
+          3.escreva o número de todos os contatos na primeira coluna
+        </p>
+        <p class="warning">5.Siga o modelo: 55DDD900000000</p>
+        <p class="warning">4.importe o arquivo salvo aqui.</p>
+      </div>
+    </div>
+  </body>
+  <script>
+    const btnImportar = document.getElementById("btnImport");
+    const status = document.getElementById("status");
+    const btnEnviar = document.getElementById("btnEnviar");
+    const mensagem = document.getElementById("message");
+
+    let caminhoArquivo = null;
+
+    // CORREÇÃO: usa o diálogo nativo do Electron — retorna o caminho real
+    btnImportar.addEventListener("click", async () => {
+      const caminho = await electronAPI.selecionarArquivo();
+      if (!caminho) return;
+      caminhoArquivo = caminho;
+      status.textContent = caminho.split(/[\\/]/).pop(); // mostra só o nome
+    });
+
+    btnEnviar.addEventListener("click", async () => {
+      if (!caminhoArquivo) {
+        alert("Selecione uma planilha.");
+        return;
+      }
+      if (!mensagem.value.trim()) {
+        alert("Digite uma mensagem.");
+        return;
+      }
+
+      btnEnviar.disabled = true;
+      status.textContent = "Enviando…";
+
+      try {
+        await electronAPI.enviarWhatsapp(caminhoArquivo, mensagem.value);
+        status.textContent = "Enviado com sucesso!";
+      } catch (err) {
+        status.textContent = `Erro: ${err.message}`;
+        console.error(err);
+      } finally {
+        btnEnviar.disabled = false;
+      }
+    });
+  </script>
+</html>
