@@ -73,22 +73,22 @@ pip install -r requirements.txt
 ## Formato da Planilha Excel
 
 A planilha deve seguir exatamente este padrão para que o script funcione corretamente:
-
+ 
 - O arquivo deve ser `.xlsx`
 - A aba (sheet) deve se chamar **`Página1`**
 - Os dados começam na **linha 2** (linha 1 é o cabeçalho)
-- **Coluna A** → Nome do contato
-- **Coluna B** → Número do telefone
-
+- **Coluna A** → Número do telefone
 ### Exemplo:
-
-| Nome     | Telefone       |
-|----------|----------------|
-| João     | 5583991234567  |
-| Maria    | 5511987654321  |
-
+ 
+| Telefone       |
+|----------------|
+| 5583991234567  |
+| 5511987654321  |
+ 
 > ⚠️ **Formato do número:** `55` + DDD (2 dígitos) + número (9 dígitos)  
 > Exemplo: `5583991234567` → Brasil (55) + DDD 83 + 991234567
+ 
+---
 
 ---
 
