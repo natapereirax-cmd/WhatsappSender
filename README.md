@@ -92,7 +92,7 @@ A planilha deve seguir exatamente este padrão para que o script funcione corret
 
 ---
 
-## ▶️ Como Usar
+## Como Usar
 
 ### Iniciar a aplicação
 
@@ -118,7 +118,7 @@ A interface gráfica será aberta. A partir dela:
 
 ---
 
-## 🧰 Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 | Tecnologia   | Função                                      |
 |--------------|---------------------------------------------|
@@ -139,12 +139,7 @@ A interface gráfica será aberta. A partir dela:
 
 ---
 
-## 🤝 Contribuindo
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir uma *issue* ou enviar um *pull request*.
-
----
-
-## 📄 Licença
+## Licença
 
 Este projeto está sob a licença ISC. Consulte o arquivo `package.json` para mais detalhes.
