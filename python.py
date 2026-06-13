@@ -9,6 +9,9 @@ import os
 arquivo_excel = sys.argv[1]
 message_file  = sys.argv[2]
 
+webbrowser.open('https://web.whatsapp.com/')
+sleep(30)
+
 with open(message_file, 'r', encoding='utf-8') as f:
     message = f.read()
 
