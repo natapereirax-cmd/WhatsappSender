@@ -21,8 +21,7 @@ workbook     = openpyxl.load_workbook(arquivo_excel)
 clients_page = workbook['Página1']
 
 for row in clients_page.iter_rows(min_row=2):
-    name  = row[0].value
-    phone = row[1].value
+    phone = row[0].value
 
     if not phone:
         continue
